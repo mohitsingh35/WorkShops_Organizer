@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/allWorkshopsFragment">
+
+    <fragment
+        android:id="@+id/allWorkshopsFragment"
+        android:name="com.ncs.assignment.UI.Main.AllWorkshops.AllWorkshopsFragment"
+        android:label="AllWorkshopsFragment"
+
+        >
+        <action
+            android:id="@+id/action_allWorkshopsFragment_to_myWorkshopsFragment"
+            app:destination="@id/myWorkshopsFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/myWorkshopsFragment"
+        android:name="com.ncs.assignment.UI.Main.MyWorkshops.MyWorkshopsFragment"
+        android:label="MyWorkshopsFragment"
+        >
+        <action
+            android:id="@+id/action_myWorkshopsFragment_to_allWorkshopsFragment"
+            app:destination="@id/allWorkshopsFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+
+
+</navigation>
