@@ -43,4 +43,12 @@ class SharedPrefHelper(private val context: Context) {
 
         return workshops
     }
+    fun setpref(isSkiped:Boolean){
+        val editor=sharedPreferences.edit()
+        editor.putBoolean("skip",isSkiped)
+        editor.apply()
+    }
+    fun getpref():Boolean{
+        return sharedPreferences.getBoolean("skip",false)
+    }
 }

@@ -40,6 +40,7 @@ class AllWorkShopsAdapter(private val context: Context, private val data: List<W
                     builder.setMessage("Can't Apply to Workshops, You have to be logged in")
                     builder.setPositiveButton("Go to Login Page") { dialog, which ->
                         val intent = Intent(context, AuthActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         context.startActivity(intent)
                     }
                     val dialog = builder.create()
@@ -56,6 +57,9 @@ class AllWorkShopsAdapter(private val context: Context, private val data: List<W
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
+        if (sharedPreferencesHelper.isWorkshopApplied(item.id)) {
+            holder.button.text="Already Applied"
+        }
         holder.itemText.text = item.name
         Glide.with(context)
             .load(item.imageUrl)

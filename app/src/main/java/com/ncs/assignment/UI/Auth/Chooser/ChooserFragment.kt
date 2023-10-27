@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.ncs.assignment.UI.Main.MainActivity
 import com.ncs.assignment.R
+import com.ncs.assignment.UI.database.SharedPrefHelper
 import com.ncs.assignment.databinding.FragmentChooserBinding
 class ChooserFragment: Fragment() {
 
@@ -32,6 +33,7 @@ class ChooserFragment: Fragment() {
     }
 
     private fun setUpViews() {
+        val sharedPreferencesHelper = SharedPrefHelper(requireContext())
         binding.login.setOnClickListener {
             findNavController().navigate(R.id.action_chooserFragment_to_loginScreenFragment)
         }
@@ -39,6 +41,7 @@ class ChooserFragment: Fragment() {
             findNavController().navigate(R.id.action_chooserFragment_to_signUpScreenFragment)
         }
         binding.skip.setOnClickListener {
+            sharedPreferencesHelper.setpref(true)
             requireContext().startActivity(Intent(requireContext(), MainActivity::class.java))
         }
 

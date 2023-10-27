@@ -53,8 +53,8 @@ class LoginScreenFragment : Fragment() {
                             requireContext().startActivity(intent)
                             requireActivity().finish()
                         } else {
-                            binding.btnLogin.visibility=View.GONE
-                            binding.progressCircular.visibility=View.VISIBLE
+                            binding.btnLogin.visibility=View.VISIBLE
+                            binding.progressCircular.visibility=View.GONE
                             Toast.makeText(requireContext(), "Login failed. Please try again.", Toast.LENGTH_SHORT).show()
                         }
                     }

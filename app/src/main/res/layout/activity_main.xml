@@ -34,6 +34,17 @@
             android:text="My Workshops"
             android:textAllCaps="false"
             android:textColor="@color/white"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:id="@+id/signout"
+            android:layout_weight=".5"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_bg"
+            android:text="Log Out"
+            android:textAllCaps="false"
+            android:textColor="@color/white"/>
 
     </LinearLayout>
     <androidx.fragment.app.FragmentContainerView

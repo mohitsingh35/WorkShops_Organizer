@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.google.firebase.auth.FirebaseAuth
 import com.ncs.assignment.UI.Main.MainActivity
 import com.ncs.assignment.UI.Auth.AuthActivity
+import com.ncs.assignment.UI.database.SharedPrefHelper
 import com.ncs.assignment.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
@@ -14,6 +15,8 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val sharedPreferencesHelper = SharedPrefHelper(this)
+        val skip=sharedPreferencesHelper.getpref()
         val logo=binding.ivLogo
         logo.alpha=0f
         logo.animate().setDuration(1500).alpha(1f).withEndAction{
@@ -21,7 +24,11 @@ class SplashActivity : AppCompatActivity() {
                 this.startActivity(Intent(this, MainActivity::class.java))
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             }
-            else{
+            if (FirebaseAuth.getInstance().currentUser==null && skip){
+                this.startActivity(Intent(this, MainActivity::class.java))
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+            }
+            if (FirebaseAuth.getInstance().currentUser==null && !skip ){
                 this.startActivity(Intent(this, AuthActivity::class.java))
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             }
